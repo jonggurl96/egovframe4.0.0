@@ -3,7 +3,7 @@
 <div class="login-info-box">
 	<div class="login-info">
 		<img id="user-profile" src="/images/test/user/profile.jpg">
-		<strong id="login-id">${loginInfo.id }</strong>
+		<strong id="login-id">${loginInfo }</strong>
 		<!-- <img id="user-profile" src="/src/main/webapp/images/test/user/profile.jpg">
 		<strong id="login-id">jonggurl96</strong> -->
 	</div>

@@ -1,5 +1,7 @@
 package cpservice.board.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,6 +28,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void regist(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
+		vo.setRegdate(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
 		dao.insert(vo);
 	}
 

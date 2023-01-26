@@ -23,7 +23,7 @@
 		<div class="content-regist-box">
 			<textarea name="content" id="regist-content" rows="3" placeholder="Enter Content"></textarea>
 		</div>
-		<input type="hidden" name="writer" value="${loginInfo.id}">
+		<input type="hidden" name="writer" value="${loginInfo}">
 		<!-- <input type="hidden" name="writer" value="jonggurl96"> -->
 		
 	</form>

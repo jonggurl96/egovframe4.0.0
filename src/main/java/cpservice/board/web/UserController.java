@@ -32,7 +32,7 @@ public class UserController {
 	public String loginpost(LoginDTO dto, Model model) throws Exception {
 		UserVO vo = service.login(dto);
 		logger.info("login " + vo);
-		model.addAttribute("loginInfo", vo);
+		model.addAttribute("loginInfo", vo.getId());
 		return "redirect:/board/SPList?page=1&rcpp=10";
 	}
 	

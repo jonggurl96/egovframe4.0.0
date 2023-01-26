@@ -63,13 +63,13 @@ let deleteReply = (cno, writer) => {
 		}
 	});
 }
-let writeReply = () => {
+let writeComment = () => {
 	let writer = $('#login-id').text();
 	let content = $('#writtenReply').val();
 	let bno = $('#bno').val();
 	$.ajax({
 		type:"post",
-		url:"/comments/",
+		url:"/comments/comment",
 		headers: {
 			"Content-Type":"application/json",
 			"X-HTTP-Method-Override": "post"

@@ -69,7 +69,7 @@
 	<div class="reply-regist-box">
 		<spring:message code="placeholder.regist.reply" var="placeholder"/>
 		<textarea id="writtenReply" rows="3" placeholder="${placeholder}"></textarea>
-		<button onclick="writeReply();"><spring:message code="reply.submit"/></button>
+		<button onclick="writeComment();"><spring:message code="reply.submit"/></button>
 		<!-- <textarea id="writtenReply" rows="3" placeholder="댓글을 입력하세요."></textarea>
 		<button id="writeReplyBtn" onclick="writeReply();">등록</button> -->
 	</div>
