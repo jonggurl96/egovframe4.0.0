@@ -1,0 +1,11 @@
+*.db
+*.sql
+*.class
+*.jar
+*.png
+*.jpg
+/.settings/
+.classpath
+.project
+/src/test
+/target

@@ -1,0 +1,49 @@
+.regist-main-box {
+    width: 50%;
+    margin: auto;
+}
+
+.title-regist-box {
+    width: 100%;
+    background: #ffff99;
+    display: flex;
+    justify-content: center;
+}
+
+#regist-title {
+    width: 90%;
+    margin: 15px;
+}
+
+.content-regist-box {
+    width: 100%;
+    background: #ffff99;
+    display: flex;
+    justify-content: center;
+}
+
+#regist-content {
+    resize: none;
+    width: 90%;
+    margin: 15px;
+    margin-top: 0px;
+    height: 300px;
+}
+
+.regist-btns-box {
+    width: 50%;
+    margin: auto;
+}
+
+.regist-btns-box>button {
+    border-radius: 5px;
+    border-color: #ffff9900
+}
+
+.regist-btns-box>button.btn-primary {
+    background: #aa88ff;
+}
+
+.regist-btns-box>button.btn-danger {
+    background: #ff88aa;
+}

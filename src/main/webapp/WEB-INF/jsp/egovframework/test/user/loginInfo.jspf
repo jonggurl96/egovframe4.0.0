@@ -1,0 +1,26 @@
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+<div class="login-info-box">
+	<div class="login-info">
+		<img id="user-profile" src="/images/test/user/profile.jpg">
+		<strong id="login-id">${loginInfo.id }</strong>
+		<!-- <img id="user-profile" src="/src/main/webapp/images/test/user/profile.jpg">
+		<strong id="login-id">jonggurl96</strong> -->
+	</div>
+	<!-- /.login-info -->
+	<div class="logout-button">
+		<form action="/user/logout">
+			<button style="margin:10px"><spring:message code="label.logout"/></button>
+			<!-- <button style="margin:10px">로그아웃</button> -->
+		</form>
+	</div>
+	<!-- /.logout-button -->
+</div>
+<!-- /.login-info-box -->
+
+<div class="div-body-header">
+	<div class="board-title">
+		<h1><span>BOARD<br></span></h1>
+		<h3><span>with eGovFramework</span></h3>
+	</div> <!-- /.board-title -->
+</div> <!-- /.div-body-header -->

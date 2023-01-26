@@ -1,0 +1,41 @@
+.modify-main-box {
+    width: 50%;
+    margin: auto;
+}
+
+.title-modified-box {
+    width: 100%;
+    background: #ffff99;
+    display: flex;
+    justify-content: center;
+}
+
+#modified-title {
+    width: 90%;
+    margin: 15px;
+}
+
+.content-modified-box {
+    width: 100%;
+    background: #ffff99;
+    display: flex;
+    justify-content: center;
+}
+
+#modified-content {
+    resize: none;
+    width: 90%;
+    margin: 15px;
+    margin-top: 0px;
+    height: 300px;
+}
+
+.modify-btns-box {
+    width: 50%;
+    margin: auto;
+}
+
+.modify-btns-box>button {
+    border-radius: 5px;
+    border-color: #ffff9900
+}

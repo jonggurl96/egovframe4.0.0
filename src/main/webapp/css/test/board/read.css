@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+.main-content {
+    margin:auto;
+    width:50%;
+}
+
+.written-info-box {
+    overflow:hidden;
+    padding-bottom: 10px;
+    border:solid;
+    border-color:#ffff99;
+}
+
+.writer-left-box {
+    float:left;
+    margin: 5px;
+}
+
+.written-date-right-box {
+    float:right;
+    margin: 5px;
+}
+
+.title-box {
+    margin-top:15px;
+    border-bottom:solid;
+    border-color:aliceblue;
+}
+
+#written-content-textarea {
+    margin:25px auto 0px;
+    width: 95%;
+    height:380px;
+    border-radius: 5px;
+    font-size: large;
+    resize:none;
+    padding: 10px;
+}
+
+.content-button-box {
+    margin-top:15px;
+}
+
+.content-button-box>button {
+    border-color:#ffffff00;
+    border-radius:5px;
+}
+
+.reply-main-box {
+    margin:auto;
+    width:50%;
+    margin-top:15px;
+    border-top:solid;
+    border-top-color:#9999ff1f;
+    padding-top:8px;
+}
+
+.reply-regist-box {
+    width:100%;
+    margin:auto;
+    overflow: hidden;
+    display:flex;
+    justify-content:space-around;
+}
+
+#writtenReply {
+    width:78%;
+    resize:none;
+    border-radius:5px;
+}
+
+#writeReplyBtn {
+    padding:1px;
+    width:15%;
+}
+
+#replies {
+    padding:0px;
+}
+
+.ReplyList {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-around;
+    margin-bottom:13px;
+}
+
+.reply-writer {
+    text-align:left;
+    max-width:8%;
+    display: inline-block;
+
+    text-overflow: ellipsis;
+    inline-size: 50px;
+    overflow:hidden;
+}
+
+.reply-text {
+    resize:none;
+    border:none;
+    border-bottom:thick double #33ff3399;
+    width: 70%;
+    position: static;
+}
+
+.del-reply-btn {
+    height:fit-content;
+}

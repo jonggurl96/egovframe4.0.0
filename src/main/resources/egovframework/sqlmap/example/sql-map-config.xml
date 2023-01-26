@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<!-- <sqlMap resource="egovframework/sqlmap/example/sample/EgovSample_Sample_SQL.xml"/> -->
+	<!-- 다른 mapper 만들고 대기 -->
+	<sqlMap resource="egovframework/sqlmap/test/mappers/boardMapper.xml"/>
+	<sqlMap resource="egovframework/sqlmap/test/mappers/userMapper.xml"/>
+</sqlMapConfig>

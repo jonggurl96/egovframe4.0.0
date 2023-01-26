@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cpservice.board.mapper.CommentMapper">
+    
+    <select id="list" resultType="commentvo">
+        select cno, bno, writer, content, regdate, group_no, group_order, depth, parent_cno
+        from tbl_comment
+        where bno = #{bno}
+        order by group_no desc, group_order asc
+    </select>
+    
+    <update id="update">
+        update tbl_comment
+        set content=#{content}
+        where cno=#{cno}
+    </update>
+    
+    <delete id="delete">
+        delete from tbl_comment
+        where cno = #{cno}
+    </delete>
+    
+    <insert id="writeComment" statementType="CALLABLE">
+    	{
+    		CALL write_comment(#{bno}, #{writer}, #{content}, #{regdate})
+    	}
+    </insert>
+    
+    <insert id="writeReply" statementType="CALLABLE">
+    	{
+    		CALL write_reply(#{cno}, #{writer}, #{content}, #{regdate})
+    	}
+    </insert>
+    
+</mapper>

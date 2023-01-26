@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body {
+    background: #00ddff;
+}
+
+.home-login-box {
+    width: 50%;
+    margin: auto;
+}
+
+.login-logo {
+    text-align: center;
+}
+
+.login-components {
+    width: 60%;
+    margin: auto;
+    background: #ff0000;
+    overflow: hidden;
+}
+
+.account-input-box {
+    float: left;
+    padding: 15px;
+    width: 50%;
+}
+
+.account-input-box>form>div {
+    overflow: hidden;
+    width: 300px;
+}
+
+.account-input-box>form>div>input {
+    float: left;
+    width: 50%px;
+}
+
+.login-btn-box {
+    float: right;
+    padding: 15px;
+}
+
+.login-info-label {
+    float: left;
+    width: 40px;
+}
+
+.login-btn-box>input {
+    border-radius: 5px;
+    font-size: large;
+    border-color: #ffffff00;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.regist-btn-box {
+    width: 20%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.regist-btn-box>input {
+    background: #ffffff00;
+    border-color: #ffffff00;
+    color: #0000ff;
+    border-bottom-color:#0000ffff;
+}
