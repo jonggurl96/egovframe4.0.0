@@ -27,7 +27,7 @@
 		<div class="board-help-box">
 			<div class="search-box">
 				<select name="tag" id="tag">
-					<option value="all" selected="selected"> --- </option>
+					<option value="" selected="selected"> --- </option>
 					<option value="title"><spring:message code="board.title"/></option>
 					<option value="content"><spring:message code="board.content"/></option>
 					<option value="writer"><spring:message code="board.writer"/></option>

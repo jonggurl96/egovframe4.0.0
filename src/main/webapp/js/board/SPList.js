@@ -18,21 +18,18 @@ let getDate = (num) => {
 	return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes;
 }
 
-let downloadPage = function (tag, keyword, page, rcpp, totalRecordCount) {
+let downloadPage = function (tag, keyword, currentPageNo, recordCountPerPage, totalRecordCount) {
 	
 	let data = {
-			page,
-			rcpp,
-			totalRecordCount
+			currentPageNo,
+			recordCountPerPage,
+			totalRecordCount,
+			tag,
+			keyword
 	};
-	if(tag === "all") {
+	if(!tag) {
 		$('#keyword').val("");
 	}
-	else {
-		data["tag"] = tag;
-		data["keyword"] = keyword;
-	}
-	
 	$.ajax({
 		type: "post",
 		url: "/search",
