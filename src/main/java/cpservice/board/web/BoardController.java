@@ -84,7 +84,7 @@ public class BoardController {
 		 * "redirect:/board/SPList?currentPageNo=1&recordCountPerPage=10"; } return
 		 * "redirect:/user/login";
 		 */
-		return "redirect:/SPList?currentPageNo=1&recordCountPerPage=10";
+		return "redirect:/board/SPList?currentPageNo=1&recordCountPerPage=10";
 	}
 	
 	@RequestMapping("/SPList")

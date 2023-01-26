@@ -1,6 +1,7 @@
 package cpservice.board.web;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cpservice.board.domain.BoardVO;
 import cpservice.board.dto.SPDTO;
 import cpservice.board.service.BoardService;
 
@@ -29,17 +29,20 @@ public class BoardSearchController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardSearchController.class);
 
 	@PostMapping("/search")
-	public ResponseEntity<List<BoardVO>> search(@RequestBody SPDTO spdto) {
+	public ResponseEntity<Map<String, Object>> search(@RequestBody SPDTO spdto) {
 		
-		ResponseEntity<List<BoardVO>> entity = null;
+		ResponseEntity<Map<String, Object>> entity = null;
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		logger.info("search(): tag = " + spdto.getTag() + ", keyword = " + spdto.getKeyword());
 		logger.info("search(): page = " + spdto.getCurrentPageNo() + ", rcpp = " + spdto.getRecordCountPerPage());
 		
 		spdto.setPageSize(Integer.parseInt(pageSize));
+		map.put("pageInfo", spdto);
 		
 		try {
-			entity = new ResponseEntity<>(service.getList(spdto), HttpStatus.OK);
+			map.put("list", service.getList(spdto));
+			entity = new ResponseEntity<>(map, HttpStatus.OK);
 		} catch (Exception e) {
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

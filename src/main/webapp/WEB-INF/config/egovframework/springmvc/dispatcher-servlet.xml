@@ -57,11 +57,13 @@
 
     <!-- For Pagination Tag -->
     <bean id="imageRenderer" class="cpservice.cmmn.web.EgovImgPaginationRenderer"/>
+    <bean id="json2imageRenderer" class="cpservice.board.renderer.Json2ImgPaginationRenderer"/>
 
     <bean id="paginationManager" class="org.egovframe.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
         <property name="rendererType">
             <map>
                 <entry key="image" value-ref="imageRenderer"/>
+                <entry key="json2image" value-ref="json2imageRenderer"/>
             </map>
         </property>
     </bean>

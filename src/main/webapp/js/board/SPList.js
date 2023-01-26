@@ -13,7 +13,8 @@ let downloadPage = function (tag, keyword, currentPageNo, recordCountPerPage) {
 	if(!tag) {
 		$('#keyword').val("");
 	}
-	/*$.ajax({
+	
+	$.ajax({
 		type: "post",
 		url: "/search",
 		contentType: "application/json",
@@ -24,9 +25,10 @@ let downloadPage = function (tag, keyword, currentPageNo, recordCountPerPage) {
 			$('#table-board .removable').remove();
 			
 			data = JSON.parse(data);
-			let str = "";
+			let list = data.list;
 			
-			data.forEach(element => {
+			let str = "";
+			list.forEach(element => {
 				let href = "/board/read?bno=" + element.bno + "&currentPageNo=" + currentPageNo + "&recordCountPerPage=" + recordCountPerPage;
 				str += "<tr class='removable'><td class='td-bno'>" + element.bno + "</td>";
 				str += "<td><a href=" + href + ">" + element.title + "</a></td>";
@@ -34,9 +36,16 @@ let downloadPage = function (tag, keyword, currentPageNo, recordCountPerPage) {
 				str += "<td>" + element.regdate + "</td>";
 			});
 			$('#table-board').append(str);
+			
+			delete data.pageInfo.tag;
+			delete data.pageInfo.keyword;
+			let pageInfo = JSON.stringify(data.pageInfo);
+			let paginationStr = "<ui:pagination id='paging-tag' type='json2image' jsFunction='otherPage' />";
+			$('#paging').html(paginationStr);
+			$('#paging-tag').attr("paginationInfo", pageInfo);
 		}
-	});*/
-	self.location = "/board/SPList?currentPageNo=" + currentPageNo + "&recordCountPerPage=" + recordCountPerPage + "&tag=" + tag + "&keyword=" + keyword;
+	});
+	//self.location = "/board/SPList?currentPageNo=" + currentPageNo + "&recordCountPerPage=" + recordCountPerPage + "&tag=" + tag + "&keyword=" + keyword;
 }
 
 $(document).ready(function() {
