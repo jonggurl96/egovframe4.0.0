@@ -5,7 +5,7 @@ import java.util.List;
 import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 
 import cpservice.board.domain.BoardVO;
-import cpservice.board.search.Search;
+import cpservice.board.domain.SearchVO;
 
 @Mapper("boardMapper")
 public interface BoardMapper {
@@ -18,7 +18,7 @@ public interface BoardMapper {
 	
 	public void delete(int bno) throws Exception;
 	
-	public int countAllList() throws Exception;
+	public int numberingRecords(SearchVO searchvo) throws Exception;
 	
 	/**
 	 * 페이징 및 키워드 검색
@@ -29,14 +29,6 @@ public interface BoardMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<BoardVO> search(Search search) throws Exception;
-	
-	/**
-	 * 검색된 전체 항목 개수
-	 * @param tag
-	 * @param keyword
-	 * @return
-	 * @throws Exception
-	 */
-	public int countSearchList(Search search) throws Exception;
+	public List<BoardVO> search(SearchVO searchvo) throws Exception;
+
 }

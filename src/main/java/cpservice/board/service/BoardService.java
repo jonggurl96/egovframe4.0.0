@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import cpservice.board.domain.BoardVO;
+import cpservice.board.dto.SPDTO;
 
 @Service
 public interface BoardService {
@@ -17,11 +18,5 @@ public interface BoardService {
 
 	public void remove(int bno) throws Exception;
 
-	public int getCount() throws Exception;
-
-	public List<BoardVO> getList(int start, int rcpp) throws Exception;
-	
-	public List<BoardVO> getList(String tag, String keyword, int start, int rcpp) throws Exception;
-
-	public int getCountSearched(String tag, String keyword) throws Exception;
+	public List<BoardVO> getList(SPDTO spdto) throws Exception;
 }

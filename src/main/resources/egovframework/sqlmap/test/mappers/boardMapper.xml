@@ -25,8 +25,14 @@
         where bno = #{bno}
     </delete>
     
-    <select id="countAllList" resultType="int">
-        select count(*) from tbl_board
+    <select id="numberingRecords" resultType="int">
+        select count(bno) from tbl_board
+        <choose>
+        	<when test="tag == 'title'">where title like concat('%', #{keyword}, '%')</when>
+        	<when test="tag == 'content'">where content like concat('%', #{keyword}, '%')</when>
+        	<when test="tag == 'writer'">where writer like concat('%', #{keyword}, '%')</when>
+        	<otherwise></otherwise>
+        </choose>
     </select>
     
     <select id="search" resultType="boardvo" parameterType="hashMap">
@@ -40,16 +46,6 @@
         </choose>
         order by bno desc
         limit #{start}, #{rcpp}
-    </select>
-    
-    <select id="countSearchList" parameterType="hashMap" resultType="int">
-        select count(*) from tbl_board
-        <choose>
-        	<when test="tag == 'title'">where title like concat('%', #{keyword}, '%')</when>
-        	<when test="tag == 'content'">where content like concat('%', #{keyword}, '%')</when>
-        	<when test="tag == 'writer'">where writer like concat('%', #{keyword}, '%')</when>
-        	<otherwise></otherwise>
-        </choose>
     </select>
     
 </mapper>

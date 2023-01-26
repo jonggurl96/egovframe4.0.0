@@ -9,8 +9,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Repository;
 
 import cpservice.board.domain.BoardVO;
+import cpservice.board.domain.SearchVO;
+import cpservice.board.dto.SPDTO;
 import cpservice.board.mapper.BoardMapper;
-import cpservice.board.search.Search;
 import cpservice.board.service.BoardService;
 
 @Repository
@@ -45,28 +46,16 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int getCount() throws Exception {
+	public List<BoardVO> getList(SPDTO spdto) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.countAllList();
-	}
-
-	@Override
-	public List<BoardVO> getList(int start, int rcpp) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.search(new Search(start, rcpp));
-	}
-
-	@Override
-	public List<BoardVO> getList(String tag, String keyword, int start, int rcpp) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.search(new Search(tag, keyword, start, rcpp));
-	}
-
-	@Override
-	public int getCountSearched(String tag, String keyword) throws Exception {
-		// TODO Auto-generated method stub
-		Search search = new Search(tag, keyword);
-		return dao.countSearchList(search);
+		SearchVO searchvo = new SearchVO(
+				spdto.getTag(),
+				spdto.getKeyword(),
+				spdto.getFirstRecordIndex(),
+				spdto.getRecordCountPerPage());
+		
+		spdto.setTotalRecordCount(dao.numberingRecords(searchvo));
+		return dao.search(searchvo);
 	}
 
 }

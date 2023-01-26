@@ -1,27 +1,27 @@
-package cpservice.board.search;
+package cpservice.board.domain;
 
-public class Search {
+public class SearchVO {
 
 	private String tag, keyword;
 	private int start, rcpp;
 	
-	public Search() {
+	public SearchVO() {
 		super();
 	}
 	
-	public Search(String tag, String keyword) {
+	public SearchVO(String tag, String keyword) {
 		super();
 		this.tag = tag;
 		this.keyword = keyword;
 	}
 
-	public Search(int start, int rcpp) {
+	public SearchVO(int start, int rcpp) {
 		super();
 		this.start = start;
 		this.rcpp = rcpp;
 	}
 
-	public Search(String tag, String keyword, int start, int rcpp) {
+	public SearchVO(String tag, String keyword, int start, int rcpp) {
 		super();
 		this.tag = tag;
 		this.keyword = keyword;
