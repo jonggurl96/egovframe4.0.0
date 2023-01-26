@@ -60,6 +60,39 @@ web.xml 3개 url-pattern 변경
         <!-- etc... -->
     </servlet-mapping>
     ```
+# MyBatis 연동하기
+> sqlSession이라는 이름의 빈(SqlSessionFactory) 생성
+1. 기존 DAO 형태로 사용할 경우
+    - extends EgovAbstractMapper
+2. Mapper interface 사용할 경우
+    - @Mapper("**Mapper")
+    - mapper.xml namespace = "**Mapper"
+    - method 이름이 mapper.xml id
+    - @Resource(name = "**Mapper")로 Injection
+    - 아래 설정 필요 (context-mapper.xml)
+    ```
+    <bean class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer>
+        <property name="basePackage" value="/" />
+    </bean>
+    ```
+3. Annotation 방식
+    - xml 작성 필요 없음
+    - dynamic query 사용 불가능
+    ```
+    @Mapper("**Mapper")
+    public interface {
+        @Select("select * from tbl")
+        public List<E> select**(...);
+    }
+    ```
+> underscore case to camel case
+> > mybatis-config.xml - configuration - settings
+> > ```
+> > <setting name="mapUnderscoreToCamelCase" value="true"/>
+> > ```
+
+
+
 
 # @Controller와 @RestController
 ## @Controller
@@ -79,7 +112,7 @@ web.xml 3개 url-pattern 변경
 > method들은 data와 ResponseEntity를 return
 > ```
 > @RequestMapping(value="/board/{bno}", method=RequestMethod.GET)
-> public ResponseEntity<VO>list(@Variable("bno") int bno) {
+> public ResponseEntity<VO>list(@PathVariable("bno") int bno) {
 >     ResponseEntity<VO> entity = null;
 >     try {
 >         ...
@@ -193,6 +226,9 @@ private T varName;
 > > request > filter > DispatcherServlet > HandlerInterceptor > Controller > view resolver > filter > response
 ## abstract class HandlerInterceptorAdapter, interface HandlerInterceptor
 > org.springframework.web.servlet.handler.*;
+
+> HandlerInterceptorAdapter는 egovframeword 4.0.0부터 spring 5.3 이상을 사용하여 제거됨
+> spring 5.3 이상일 경우 implements HandlerInterceptor 사용
 
 ```
 // Controller에서 동작하기 전 수행
