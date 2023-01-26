@@ -79,16 +79,19 @@
 				<label class="reply-writer" title="jonggurl96">jonggurl96</label>
 				<label class="reply-text">111111</label>
 				<button class="del-reply-btn" onclick='console.log(null);'>삭제</button>
+				<button class="add-reply-btn" onclick='console.log(null);'>답글</button>
 			</li>
 			<li class="ReplyList">
 				<label class="reply-writer" title="user12">user12</label>
 				<label class="reply-text">만약에 댓글이 굉장히 길면 자동으로 개행되어야 하는데 잘 되었으면 좋겠다.</label>
 				<button class="del-reply-btn" onclick='console.log(null);'>삭제</button>
+				<button class="add-reply-btn" onclick='console.log(null);'>답글</button>
 			</li>
 			<li class="ReplyList">
 				<label class="reply-writer" title="user00">user00</label>
 				<label class="reply-text">222222</label>
 				<button class="del-reply-btn" onclick='console.log(null);'>삭제</button>
+				<button class="add-reply-btn" onclick='console.log(null);'>답글</button>
 			</li>
 		</ul>
 	</div>

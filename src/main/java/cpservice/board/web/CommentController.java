@@ -69,4 +69,20 @@ public class CommentController {
 		}
 		return entity;
 	}
+	
+	@PostMapping("reply")
+	public ResponseEntity<String> writeReply(@RequestBody CommentVO vo, HttpServletRequest request) {
+		ResponseEntity<String> entity = null;
+		String id = (String) request.getSession().getAttribute("loginInfo");
+		logger.info("writer id from session: " + id);
+		logger.info("write reply...... " + vo);
+		vo.setWriter(id);
+		try {
+			service.writeReply(vo);
+			entity = new ResponseEntity<>("등록되었습니다.", HttpStatus.OK);
+		} catch (Exception e) {
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 }

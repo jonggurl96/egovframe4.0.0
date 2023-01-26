@@ -42,7 +42,8 @@ let getReplies = () => {
 				str += "<li class='ReplyList'>";
 				str += "<label class='reply-writer' title='" + this.writer + "'>" + this.writer + "</label>";
 				str += "<label class='reply-text'>" + this.content + "</label>";
-				str += "<button class='del-reply-btn' onclick='deleteReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + delBtnVal + "</button></li>";
+				str += "<button class='del-reply-btn' onclick='deleteReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + delBtnVal + "</button>";
+				str += "<button class='add-reply-btn' onclick='writeReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + delBtnVal + "</button></li>";
 			});
 			$('#replies').html(str);
 		}
@@ -84,6 +85,32 @@ let writeComment = () => {
 			alert(msg);
 			getReplies();
 			$('#writtenReply').val("");
+		}
+	});
+}
+let writeReply = (cno, writer) => {
+	let content = prompt();
+	if (!content) return;
+	$.ajax({
+		type:"post",
+		url:"/comments/reply",
+		headers: {
+			"Content-Type": "application/json",
+			"X-HTTP-Method-Override": "post"
+		},
+		dataType: "text",
+		data: JSON.stringify({
+			writer,
+			cno,
+			content
+		}),
+		success: function(data) {
+			if(!data) {
+				alert("등록 실패 ㅠㅠ");
+				return;
+			}
+			alert(data);
+			getReplies();
 		}
 	});
 }
