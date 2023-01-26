@@ -2,9 +2,16 @@ package cpservice.board.dto;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
+/**
+ * Searching by tag and keyword, Paging DTO
+ * @author jonggurl
+ *
+ */
 public class SPDTO extends PaginationInfo{
+	
 	private String tag;
 	private String keyword;
+
 	public String getTag() {
 		return tag;
 	}

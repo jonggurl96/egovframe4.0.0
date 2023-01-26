@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
@@ -58,6 +57,15 @@
 					<th><spring:message code='board.writer' /></th>
 					<th><spring:message code='board.regdate' /></th>
                 </tr>
+                
+                <c:forEach items="${list }" var="vo">
+                	<tr class="removable">
+                		<td class="td-bno">${vo.bno }</td>
+                		<td><a href="/board/read?bno=${vo.bno}&page=1&rcpp=10">${vo.title }</a></td>
+                		<td>${vo.writer }</td>
+                		<td>${vo.regdate }</td>
+                	</tr>
+                </c:forEach>
                 <!-- <tr>
                     <th>bno</th>
 					<th>제목</th>

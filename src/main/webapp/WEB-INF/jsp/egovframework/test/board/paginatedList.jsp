@@ -17,7 +17,7 @@ console.log(alert);
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 function otherPage(pageNo) {
-	self.location = "/board/paginatedList?page=" + pageNo + "&rcpp=" + $("#rcpp").val();
+	self.location = "/board/paginatedList?currentPageNo=" + pageNo + "&recordCountPerPage=" + $("#rcpp").val();
 }
 
 $(document).ready(function() {
@@ -35,7 +35,7 @@ let changeRCPP = (sel) => {
 	let boardIndex = ( ${pageInfo.currentPageNo} - 1) * ${pageInfo.recordCountPerPage} + 1;
 	let newPage = Math.ceil(boardIndex / sel.value);
 	
-	self.location="/board/paginatedList?page=" + newPage + "&rcpp=" + sel.value;
+	self.location="/board/paginatedList?currentPageNo=" + newPage + "&recordCountPerPage=" + sel.value;
 }
 
 let searchKeyword = () => {
@@ -43,7 +43,7 @@ let searchKeyword = () => {
 	let keyword = $('#keyword').val();
 	let rcpp = $('#rcpp').val();
 	
-	self.location="/board/search?tag=" + tag + "&keyword=" + keyword + "&rcpp=" + rcpp;
+	self.location="/board/search?tag=" + tag + "&keyword=" + keyword + "&recordCountPerPage=" + rcpp;
 }
 
 </script>
@@ -95,7 +95,7 @@ let searchKeyword = () => {
 				<c:forEach items="${list }" var="board">
 					<tr>
 						<td class="td-bno"><c:out value="${board.bno }" /></td>
-						<td><a href="/board/read?bno=${board.bno }&page=${pageInfo.currentPageNo}&rcpp=${pageInfo.recordCountPerPage}"><c:out value="${board.title }"/></a></td>
+						<td><a href="/board/read?bno=${board.bno }&currentPageNo=${pageInfo.currentPageNo}&recordCountPerPage=${pageInfo.recordCountPerPage}"><c:out value="${board.title }"/></a></td>
 						<td><c:out value="${board.writer }" /></td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regdate }"/></td>
 					</tr>

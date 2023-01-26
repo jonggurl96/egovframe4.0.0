@@ -24,7 +24,7 @@ $(document).ready(function() {
 	$(".btn-primary").on("click", function() {
 		let page = $('#page').val();
 		let rcpp = $('#rcpp').val();
-		self.location = "/board/SPList?page=" + page + "&rcpp=" + rcpp;
+		self.location = "/board/SPList?currentPageNo=" + page + "&recordCountPerPage=" + rcpp;
 	});
 	
 	getReplies();

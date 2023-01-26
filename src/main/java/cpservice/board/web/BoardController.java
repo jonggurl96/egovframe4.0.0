@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cpservice.board.domain.BoardVO;
+import cpservice.board.dto.SPDTO;
 import cpservice.board.service.BoardService;
-import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
 @RequestMapping("/board/*")
@@ -52,7 +52,7 @@ public class BoardController {
 		logger.info("Update " + vo);
 		service.modify(vo);
 		rttr.addFlashAttribute("msg", "수정이 완료되었습니다.");
-		return "redirect:/board/read?bno=" + vo.getBno() + "&page=" + page + "&rcpp=" + rcpp;
+		return "redirect:/board/read?bno=" + vo.getBno() + "&currentPageNo=" + page + "&recordCountPerPage=" + rcpp;
 	}
 	
 	@RequestMapping(value="/remove", method=RequestMethod.POST)
@@ -60,7 +60,7 @@ public class BoardController {
 		logger.info("Remove content where bno = " + cri.getBno());
 		service.remove(cri.getBno());
 		rttr.addFlashAttribute("msg", "삭제되었습니다.");
-		return "redirect:/board/SPList?page=" + cri.getPage() + "&rcpp=" + cri.getRcpp();
+		return "redirect:/board/SPList?currentPageNo=" + cri.getPage() + "&recordCountPerPage=" + cri.getRcpp();
 	}
 	
 	@RequestMapping(value="/regist", method=RequestMethod.GET)
@@ -73,44 +73,31 @@ public class BoardController {
 		logger.info("Regist content: " + vo);
 		service.regist(vo);
 		rttr.addFlashAttribute("msg", "글이 등록되었습니다.");
-		return "redirect:/board/SPList?page=1&rcpp=10";
+		return "redirect:/board/SPList?currentPageNo=1&recordCountPerPage=10";
 	}
 	
 	@RequestMapping("/board/home")
 	public String home(HttpServletRequest request) throws Exception {
 		logger.info("home .......");
 		if(request.getSession().getAttribute("loginInfo") != null) {
-			return "redirect:/board/SPList?page=1&rcpp=10";
+			return "redirect:/board/SPList?currentPageNo=1&recordCountPerPage=10";
 		}
 		return "redirect:/user/login";
 	}
 	
 	@RequestMapping("/SPList")
-	public void splist(@RequestParam("page") int page, 
-			@RequestParam("rcpp") int rcpp, 
-			@RequestParam(value = "tag", required = false) String tag, 
-			@RequestParam(value = "keyword", required = false) String keyword, Model model) throws Exception{
+	public void splist(SPDTO spdto, Model model) throws Exception{
 		logger.info("SPList ......");
-		logger.info("page: " + page + ", rcpp: " + rcpp);
+		logger.info("page: " + spdto.getCurrentPageNo() + ", rcpp: " + spdto.getRecordCountPerPage());
+		spdto.setPageSize(Integer.parseInt(pageSize));
+
+		model.addAttribute("tag", spdto.getTag());
+		model.addAttribute("keyword", spdto.getKeyword());
+		model.addAttribute("list", service.getList(spdto));
 		
-		PaginationInfo pageInfo = new PaginationInfo();
-		pageInfo.setCurrentPageNo(page);
-		pageInfo.setRecordCountPerPage(rcpp);
-		pageInfo.setPageSize(Integer.parseInt(pageSize));
-		if(tag != null) {
-			pageInfo.setTotalRecordCount(service.getCountSearched(tag, keyword));
-			model.addAttribute("tag", tag);
-			model.addAttribute("keyword", keyword);
-		} else {
-			pageInfo.setTotalRecordCount(service.getCount());
-			model.addAttribute("tag", "all");
-			model.addAttribute("keyword", "");
-		}
+		logger.info("searched record count: " + spdto.getTotalRecordCount());
 		
-		logger.info("SPList pageInfo page = " + pageInfo.getCurrentPageNo());
-		logger.info("pageInfo: page, rcpp, totalPageCount");
-		logger.info("" + pageInfo.getCurrentPageNo() + ", " + pageInfo.getRecordCountPerPage() + ", " + pageInfo.getTotalPageCount());
-		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("pageInfo", spdto);
 	}
 	
 }

@@ -20,15 +20,6 @@ public interface BoardMapper {
 	
 	public int numberingRecords(SearchVO searchvo) throws Exception;
 	
-	/**
-	 * 페이징 및 키워드 검색
-	 * @param tag: 검색할 항목
-	 * @param keyword: 검색 내용
-	 * @param start: 시작 인덱스
-	 * @param rcpp: 검색 항목 개수
-	 * @return
-	 * @throws Exception
-	 */
 	public List<BoardVO> search(SearchVO searchvo) throws Exception;
 
 }

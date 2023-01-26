@@ -12,6 +12,6 @@ $(document).ready(function() {
 		let bno = $('#bno').val();
 		let page = $('#page').val();
 		let rcpp = $('#rcpp').val();
-		self.location = "/board/read?bno=" + bno + "&page=" + page + "&rcpp=" + rcpp;
+		self.location = "/board/read?bno=" + bno + "&currentPageNo=" + page + "&recordCountPerPage=" + rcpp;
 	});
 });
