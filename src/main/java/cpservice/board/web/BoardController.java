@@ -79,10 +79,12 @@ public class BoardController {
 	@RequestMapping("/board/home")
 	public String home(HttpServletRequest request) throws Exception {
 		logger.info("home .......");
-		if(request.getSession().getAttribute("loginInfo") != null) {
-			return "redirect:/board/SPList?currentPageNo=1&recordCountPerPage=10";
-		}
-		return "redirect:/user/login";
+		/*
+		 * if(request.getSession().getAttribute("loginInfo") != null) { return
+		 * "redirect:/board/SPList?currentPageNo=1&recordCountPerPage=10"; } return
+		 * "redirect:/user/login";
+		 */
+		return "redirect:/SPList?currentPageNo=1&recordCountPerPage=10";
 	}
 	
 	@RequestMapping("/SPList")

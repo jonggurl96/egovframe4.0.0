@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import cpservice.board.domain.UserVO;
-
 public class BoardInterceptor implements HandlerInterceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardInterceptor.class);
@@ -24,7 +22,7 @@ public class BoardInterceptor implements HandlerInterceptor {
 			response.sendRedirect("/user/login");
 			return false;
 		}
-		String id = ((UserVO)vo).getId();
+		String id = (String) vo;
 		logger.info(id + " access......: " + request.getRequestURL());
 		return true;
 	}
