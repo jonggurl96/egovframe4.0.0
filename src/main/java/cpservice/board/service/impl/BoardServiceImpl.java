@@ -66,7 +66,6 @@ public class BoardServiceImpl implements BoardService {
 		 */
 		int firstRecordIndex = spdto.getFirstRecordIndex();
 		firstRecordIndex -= firstRecordIndex % recordCountOnFullPageList;
-		firstRecordIndex++;
 		
 		searchvo.setStart(firstRecordIndex);
 		searchvo.setRcpp(recordCountOnFullPageList);

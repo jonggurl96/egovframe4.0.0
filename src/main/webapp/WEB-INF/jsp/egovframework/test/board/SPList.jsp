@@ -61,8 +61,8 @@
                 </tr>
                 
                 <c:forEach items="${list }" var="vo" varStatus="status">
-                	<fmt:parseNumber var="pageNum" integerOnly='true' value='${Math.floor(status.index div pageInfo.recordCountPerPage) + 1 }' />
-                	<tr class="${pageNum }" style="display: none" >
+                	<fmt:parseNumber var="pageNum" integerOnly='true' value='${Math.floor(status.index div pageInfo.recordCountPerPage) }' />
+                	<tr class="${pageNum + pageInfo.firstPageNoOnPageList }" style="display: none" >
                 		<td class="td-bno">${vo.bno }</td>
                 		<td><a href="/board/read?bno=${vo.bno}&page=1&rcpp=10">${vo.title }</a></td>
                 		<td>${vo.writer }</td>

@@ -68,6 +68,10 @@ $(document).ready(function() {
 
 });
 
+let otherPageList = (tag, keyword, page, rcpp) => {
+	self.location = "/board/SPList?tag=" + tag + "&keyword=" + keyword + "&recordCountPerPage=" + rcpp + "&currentPageNo=" + page;
+}
+
 let otherPage = (pageNo) => {
 	let fpn = $('#first-page-num').val();
 	let lpn = $('#last-page-num').val();
@@ -80,7 +84,7 @@ let otherPage = (pageNo) => {
 	let keyword = $('#keyword').val();
 	let rcpp = $('#rcpp').val();
 	
-	downloadPage(tag, keyword, pageNo, rcpp);
+	otherPageList(tag, keyword, pageNo, rcpp);
 }
 
 let searchKeyword = () => {
