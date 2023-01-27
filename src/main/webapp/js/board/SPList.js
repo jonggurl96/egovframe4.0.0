@@ -40,9 +40,8 @@ let downloadPage = function (tag, keyword, currentPageNo, recordCountPerPage) {
 			delete data.pageInfo.tag;
 			delete data.pageInfo.keyword;
 			let pageInfo = JSON.stringify(data.pageInfo);
-			let paginationStr = "<ui:pagination id='paging-tag' type='json2image' jsFunction='otherPage' />";
+			let paginationStr = `<aui:pagination id='paging-tag' type='image' jsFunction='otherPage' jsonPaginationInfo=${pageInfo} />`;
 			$('#paging').html(paginationStr);
-			$('#paging-tag').attr("paginationInfo", pageInfo);
 		}
 	});
 	//self.location = "/board/SPList?currentPageNo=" + currentPageNo + "&recordCountPerPage=" + recordCountPerPage + "&tag=" + tag + "&keyword=" + keyword;

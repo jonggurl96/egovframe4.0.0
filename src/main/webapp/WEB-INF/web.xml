@@ -91,4 +91,11 @@
 		<location>/common/error.jsp</location>
 	</error-page>
 	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/WEB-INF/lib/ajax-ui</taglib-uri>
+			<taglib-location>/WEB-INF/lib/ajax-ui.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	
 </web-app>
