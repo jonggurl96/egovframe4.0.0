@@ -24,7 +24,6 @@
     display:flex;
     flex-direction: column;
     justify-content: space-around;
-    align-content: center;
 }
 
 table {
@@ -67,4 +66,13 @@ td:nth-child(odd) {
 
 .board-pagination {
 	margin: auto;
+	width: 100%;
+}
+
+#paging {
+	white-space: normal;
+	width: 50%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
 }
