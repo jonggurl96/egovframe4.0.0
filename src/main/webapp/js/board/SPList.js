@@ -68,7 +68,10 @@ $(document).ready(function() {
 
 });
 
-let otherPageList = (tag, keyword, page, rcpp) => {
+let otherPageList = (page) => {
+	let tag = $('#tag').val();
+	let keyword = $('#keyword').val();
+	let rcpp = $('#rcpp').val();
 	self.location = "/board/SPList?tag=" + tag + "&keyword=" + keyword + "&recordCountPerPage=" + rcpp + "&currentPageNo=" + page;
 }
 
@@ -76,33 +79,31 @@ let otherPage = (pageNo) => {
 	let fpn = $('#first-page-num').val();
 	let lpn = $('#last-page-num').val();
 	if(fpn <= pageNo && pageNo <= lpn) {
-		let currentPageNo = $('#paging strong').text();
+		let currentPageNo = $('#page-constant').val();
 		$('#paging *:nth-child(' + currentPageNo + ')').val();
+		
+		$('#table-board tr.' + currentPageNo).css("display", "none");
+		$('#table-board tr.' + pageNo).css("display", "table-row");
+		$('#page-constant').val(pageNo);
 		return;
 	}
-	let tag = $('#tag').val();
-	let keyword = $('#keyword').val();
-	let rcpp = $('#rcpp').val();
 	
-	otherPageList(tag, keyword, pageNo, rcpp);
+	otherPageList(pageNo);
 }
 
 let searchKeyword = () => {
-	//otherPage(1);
+	otherPageList(1);
 }
 
 let changeRCPP = (sel) => {
 
-	let currentPageNo = $('#paging strong').text();
+	let currentPageNo = $('#page-constant').val();
 	let preRcpp = $('#rcpp-constant').val();
 	
 	let boardIndex = ( currentPageNo - 1) * preRcpp + 1;
 	let newPage = Math.ceil(boardIndex / sel.value);
 	
-	let tag = $('#tag').val();
-	let keyword = $('#keyword').val();
-	
-	downloadPage(tag, keyword, newPage, sel.value);
+	otherPageList(newPage);
 }
 
 
