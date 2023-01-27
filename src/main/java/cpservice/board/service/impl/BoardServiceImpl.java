@@ -50,11 +50,27 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		SearchVO searchvo = new SearchVO(
 				spdto.getTag(),
-				spdto.getKeyword(),
-				spdto.getFirstRecordIndex(),
-				spdto.getRecordCountPerPage());
+				spdto.getKeyword());
 		
 		spdto.setTotalRecordCount(dao.numberingRecords(searchvo));
+		
+		/**
+		 * AJAX 사용하지 않는 대신 한 번에 표시되는 페이지 리스트에 존재하는 모든 레코드를 읽기 위한 레코드의 수
+		 */
+		int recordCountOnFullPageList = (spdto.getLastPageNoOnPageList() - spdto.getFirstPageNoOnPageList() + 1) * spdto.getRecordCountPerPage();
+		recordCountOnFullPageList = spdto.getTotalRecordCount() < recordCountOnFullPageList ? spdto.getTotalRecordCount() : recordCountOnFullPageList;
+		
+		/**
+		 * 1 ~ 10 중 어느 페이지가 오더라도 1페이지부터 검색
+		 * 검색하려는 전체 범위 중 첫 번째 인덱스 계산
+		 */
+		int firstRecordIndex = spdto.getFirstRecordIndex();
+		firstRecordIndex -= firstRecordIndex % recordCountOnFullPageList;
+		firstRecordIndex++;
+		
+		searchvo.setStart(firstRecordIndex);
+		searchvo.setRcpp(recordCountOnFullPageList);
+		
 		return dao.search(searchvo);
 	}
 

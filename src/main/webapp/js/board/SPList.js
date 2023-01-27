@@ -62,10 +62,20 @@ $(document).ready(function() {
 	
 	let keyword = $('#keyword-constant').val();
 	$('#keyword').val(keyword);
+	
+	let currentPageNo = $('#page-constant').val();
+	$('#table-board tr.' + currentPageNo).css("display", "table-row");
 
 });
 
 let otherPage = (pageNo) => {
+	let fpn = $('#first-page-num').val();
+	let lpn = $('#last-page-num').val();
+	if(fpn <= pageNo && pageNo <= lpn) {
+		let currentPageNo = $('#paging strong').text();
+		$('#paging *:nth-child(' + currentPageNo + ')').val();
+		return;
+	}
 	let tag = $('#tag').val();
 	let keyword = $('#keyword').val();
 	let rcpp = $('#rcpp').val();
@@ -74,7 +84,7 @@ let otherPage = (pageNo) => {
 }
 
 let searchKeyword = () => {
-	otherPage(1);
+	//otherPage(1);
 }
 
 let changeRCPP = (sel) => {
@@ -90,3 +100,5 @@ let changeRCPP = (sel) => {
 	
 	downloadPage(tag, keyword, newPage, sel.value);
 }
+
+
