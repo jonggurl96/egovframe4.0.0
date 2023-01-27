@@ -32,6 +32,7 @@ $(document).ready(function() {
 let getReplies = () => {
 	let bno = $('#bno').val();
 	let delBtnVal = $('#delButton').val();
+	let addBtnVal = $('#addButton').val();
 	
 	$.ajax({
 		type: "get",
@@ -39,11 +40,14 @@ let getReplies = () => {
 		success: function(data) {
 			let str = "";
 			$(data).each(function() {
-				str += "<li class='ReplyList'>";
+				let marginLeft = (this.depth - 1) * 30;
+				str += `<li class='ReplyList' style='margin-left: ${marginLeft}px'>`;
 				str += "<label class='reply-writer' title='" + this.writer + "'>" + this.writer + "</label>";
 				str += "<label class='reply-text'>" + this.content + "</label>";
-				str += "<button class='del-reply-btn' onclick='deleteReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + delBtnVal + "</button>";
-				str += "<button class='add-reply-btn' onclick='writeReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + delBtnVal + "</button></li>";
+				str += "<button class='reply-btns' onclick='deleteReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + delBtnVal + "</button>";
+				str += "<button class='reply-btns' onclick='writeReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + addBtnVal + "</button></li>";
+				
+				preDepth = this.depth;
 			});
 			$('#replies').html(str);
 		}

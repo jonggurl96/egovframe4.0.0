@@ -21,7 +21,9 @@
 
 <input type="hidden" id="hidden_msg" value="${msg}">
 <spring:eval expression="@propertiesService.getString('delButton')" var="delButton"/>
+<spring:eval expression="@propertiesService.getString('addButton')" var="addButton"/>
 <input type="hidden" id="delButton" value="${delButton }">
+<input type="hidden" id="addButton" value="${addButton }">
 
 <form role="form" method="post">
 	<input type="hidden" name="bno" value="${vo.bno}" id="bno">

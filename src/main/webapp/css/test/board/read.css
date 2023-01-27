@@ -53,6 +53,8 @@
     margin-top:15px;
     border-top:solid;
     border-top-color:#9999ff1f;
+    border-bottom:solid;
+    border-bottom-color:#9999ff1f;
     padding-top:8px;
 }
 
@@ -82,7 +84,8 @@
 .ReplyList {
     display:flex;
     flex-direction: row;
-    justify-content:space-around;
+    /*justify-content:space-around;*/
+    align-items: flex-end;
     margin-bottom:13px;
 }
 
@@ -104,6 +107,6 @@
     position: static;
 }
 
-.del-reply-btn {
+.reply-btns {
     height:fit-content;
 }

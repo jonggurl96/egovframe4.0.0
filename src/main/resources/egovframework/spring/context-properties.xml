@@ -9,7 +9,7 @@
 	        	<entry key="pageSize" value="10"/>
 	        	
 	        	<entry key="delButton" value="삭제"/>
-	        	
+	        	<entry key="addButton" value="답글"/>
 	        </map>
 		</property>
 	</bean>
