@@ -200,14 +200,14 @@ pageInfo.getLastRecordIndex(); // 페이지에 게시될 마지막 레코드 인
 > > egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer
 
 # Java에서 properties 파일 읽어오기
-## @Configuration
+## @Configuration - Java
 > property 설정, 빈(singletone) 등록
 ```
 @Configuration
 public class PropertyConfig {
     @Bean(name="beanName")
-	public PropertiesFactoryBean propertiesFactoryBean() throws Exception {
-		PropertiesFactoryBean pfb = new PropertiesFactoryBean();
+    public PropertiesFactoryBean propertiesFactoryBean() throws Exception {
+        PropertiesFactoryBean pfb = new PropertiesFactoryBean();
 		ClassPathResource cpr = new ClassPathResource("property 파일 경로");
 		//최상위 폴더: src/main/resources
 		pfb.setLocation(cpr);
@@ -215,11 +215,22 @@ public class PropertyConfig {
 	}
 }
 ```
-> 실제 사용
-'''
-@Value("#{beanName['propertyName']}")
-private T varName;
-'''
+> Java 사용 예시
+> ```
+> @Value("#{beanName['propertyName']}")
+> private T varName;
+> ```
+
+## context-properties.xml - JSP
+> Bean propertiesService
+> > properties > entry key="K" value="V"
+
+> Jsp 사용 예시
+> > spring:eval tag
+> > > expression="@propertiesService.getT('K')"
+> > > var="var"
+
+> ${var}
 
 # Interceptor
 > Spring interceptor lifecycle
@@ -267,6 +278,24 @@ public void afterCompletion(request, response, handler, exception) throws Except
     </list>
 </property>
 ```
+## JSON to Object
+### Java
+```
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+ObjectMapper mapper = new ObjectMapper();
+obj = (Object)mapper.readValue(str, Object.class);
+//throws JsonProcessingException
+```
+### Javascript
+```
+obj = JSON.parse(str);
+```
+## Object to String - Javascript
+```
+str = JSON.stringify(obj);
+```
+
 
 # Property
 ## *.properties 파일
